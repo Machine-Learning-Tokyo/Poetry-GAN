@@ -1,6 +1,7 @@
-# Poetry GAN
-Comparative study of generative neural text models of creative datasets using MLE and GAN objective 
-Models are pretrained on gutenberg novels first with language modeling objectve then finetuned to a target dataset.
+# Creative GANs
+Creative GANs is a research project on training language models to generate creative text with either a Maximum Likelihood Estimation (MLE) or GAN objective. It contains the code for running the experiments as described in the [paper](https://arxiv.org/abs/1909.09534). 
+
+Some curated outputs can be found [here](https://www.ai-fragments.com/)
 
 ## Datasets
 - Gutenberg Novels
@@ -12,6 +13,8 @@ Models are pretrained on gutenberg novels first with language modeling objectve 
 - AWD LSTM [paper link](https://arxiv.org/pdf/1708.02182.pdf)
 - Transformer XL [paper link](https://arxiv.org/pdf/1901.02860.pdf)
 
+The encoder models are from the fastai library
+
 ## Usage
 - Preprocess data `python preprocess.py [gutenberg/metaphors/poems/lyrics]` and save preprocessed file
 - Train language model `lang_model.py PATH FILENAME MODEL [PRETRAINED_FNAMES]`
@@ -20,7 +23,8 @@ Models are pretrained on gutenberg novels first with language modeling objectve 
 ```
 PATH - folder with data 
 FILENAME - name of preprocessed file
-PRETRAINED - pretrained weight file and vocab file (comma seperated)
+PRETRAINED - fastai model saved with learn.save()
+PRETRAINED_FNAMES - pretrained weight file and vocab file (comma seperated)
 MODEL - architecture to use {'AWD': AWD_LSTM, 'XL':TransformerXL}
 CRIT - loss function: gumbel softmax/reinforce (only for gan)
 PREDS - generate output from validation set 
